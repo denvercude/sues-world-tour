@@ -1,7 +1,7 @@
 import './globals.css';
 
 export const metadata = {
-  title: "Sue's World Tour",
+  title: "Sue's World Tour Test",
   description: "Track Sue the T-Rex as she travels the world.",
 };
 
