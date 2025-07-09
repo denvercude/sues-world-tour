@@ -1,6 +1,6 @@
 import { supabase } from './supabaseClient';
 
-export async function uploadSueImage(file: File) {
+export async function uploadSueImage(file: File): Promise<string> {
     // Check if there even is a file.
     if (!file) {
         throw new Error('File is required');
