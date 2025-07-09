@@ -1,9 +1,29 @@
 import { supabase } from './supabaseClient';
 
 export async function uploadSueImage(file: File) {
+    // Check if there even is a file.
+    if (!file) {
+        throw new Error('File is required');
+    }
+
+    // Check if the file is an image.
+    if(!file.type.startsWith('image/')){
+        throw new Error('File must be an image');
+    }
+
+    // Check that the file isn't > 5MB
+    const maxSize = 5 * 1024 * 1024;
+    if (file.size > maxSize) {
+        throw new Error('File size must be less than 5MB');
+    }
+
+    // Sanitize the file name (replace all characters not in a-z, A-Z, 0-9, dot, dash
+    // with an underscore).
+    const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
+
     // Prepends a timestamp in milliseconds to the file-name
     // before storage. This prevents duplicate file names.
-    const fileName = `${Date.now()}-${file.name}`;
+    const fileName = `${Date.now()}-${sanitizedName}`;
 
     // Uploads the file to Supabase storage bucket.
     const { error } = await supabase.storage
