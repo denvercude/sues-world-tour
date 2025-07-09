@@ -60,5 +60,10 @@ export async function uploadSueImage(file: File) {
     .from('sue-images')
     .getPublicUrl(fileName);
 
+    // Verify the public URL was generated successfully
+    if (!publicUrlData?.publicUrl) {
+        throw new Error('Failed to generate public URL for uploaded image');
+    }
+
     return publicUrlData.publicUrl;
 };
