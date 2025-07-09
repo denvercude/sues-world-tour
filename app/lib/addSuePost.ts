@@ -41,7 +41,6 @@ export async function addSuePost({
 
     // Handle errors in database insertion
     if(error) {
-        console.error('Error inserting post:', error.message);
         throw new Error(`Failed to add post: ${error.message}`);
     }
 
