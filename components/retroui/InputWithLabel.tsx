@@ -11,7 +11,7 @@ interface InputWithLabelProps {
 export default function InputStyleWithLabel(props: InputWithLabelProps) {
   return (
     <div className="w-full grid gap-1.5 p-2">
-      <Label htmlFor="file">{props.label}</Label>
+      <Label htmlFor={props.id}>{props.label}</Label>
       <Input type={props.type} id={props.id} placeholder={props.placeholder} />
     </div>
   );
