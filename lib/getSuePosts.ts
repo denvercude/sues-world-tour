@@ -22,5 +22,9 @@ export async function getSuePosts(): Promise<SuePostResponse[]> {
         throw error;
     }
 
+    if (!data) {
+        return [];
+    }
+
     return data as SuePostResponse[];
 }
