@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main>
       <h1>{"Sue's World Tour"}</h1>
-      <UploadForm></UploadForm>
+      <UploadForm />
     </main>
   );
 }

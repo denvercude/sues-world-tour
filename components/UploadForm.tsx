@@ -10,7 +10,7 @@ export default function UploadForm() {
                     <InputStyleWithLabel label="Image Upload" type="file" id="file" placeholder=""/>
                     <InputStyleWithLabel label="Caption" type="text" id="caption" placeholder="Say whatever you want!"/>
                     <InputStyleWithLabel label="Location" type="text" id="location" placeholder="Where is she now?"/>
-                    <InputStyleWithLabel label="Password" type="text" id="password" placeholder="Enter Sue's password"/>
+                    <InputStyleWithLabel label="Password" type="password" id="password" placeholder="Enter Sue's password"/>
                     <Button className="m-2">Post!</Button>
                 </Card.Content>
             </Card>
