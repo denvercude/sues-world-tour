@@ -9,8 +9,8 @@ export default function UploadLinkPolaroid() {
                 <div className="w-full aspect-square border-dashed border-2"></div>
             </Card.Content>
             <Card.Content className="flex-col justify-content items-center">
-                <Link href="/upload">
-                <Button className="m-1">Add a photo</Button>
+                <Link href="/upload" aria-label="Navigate to upload page">
+                    <Button className="m-1">Add a photo</Button>
                 </Link>
             </Card.Content>
         </Card>
