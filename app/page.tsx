@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main>
       <h1 className="flex justify-center text-7xl">{"Sue's World Tour"}</h1>
-      <div className="h-screen flex justify-center items-center">
+      <div className="min-h-[100vh] flex justify-center items-center">
         <Link href="/gallery">
           <Button>Get Started</Button>
         </Link>
