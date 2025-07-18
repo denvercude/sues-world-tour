@@ -5,6 +5,8 @@ import { Button } from "@/components/retroui/Button";
 import InputWithLabel from "./retroui/InputWithLabel";
 import { useState, ChangeEvent } from "react";
 
+const EXPECTED_PASSWORD = process.env.NEXT_PUBLIC_SUE_PASSWORD
+
 export default function UploadForm() {
     const [formData, setFormData] = useState({
         caption: "",
@@ -19,6 +21,8 @@ export default function UploadForm() {
         location: "",
         file: ""
     });
+
+    const [isUploading, setIsUploading] = useState(false);
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
@@ -41,37 +45,85 @@ export default function UploadForm() {
     };
 
     const handleUpload = () => {
+        if (isUploading) return;
+        setIsUploading(true);
+
         let hasError = false;
         const newErrors = { ...errors };
-        
-        // Validate file
+
+        // --- Required fields ---
         if (!formData.file) {
             newErrors.file = "Please upload a photo";
             hasError = true;
         }
-        
-        // Validate caption
-        if (!formData.caption.trim()) {
+
+        const trimmedCaption = formData.caption.trim();
+        if (!trimmedCaption) {
             newErrors.caption = "Caption cannot be empty";
             hasError = true;
         }
-        
-        // Validate location
-        if (!formData.location.trim()) {
+
+        const trimmedLocation = formData.location.trim();
+        if (!trimmedLocation) {
             newErrors.location = "Location cannot be empty";
             hasError = true;
         }
-        
-        // Validate password
-        if (!formData.password.trim()) {
+
+        const trimmedPassword = formData.password.trim();
+        if (!trimmedPassword) {
             newErrors.password = "Password cannot be empty";
             hasError = true;
         }
-        
+
+        // --- File type & size ---
+        if (formData.file) {
+            const allowedTypes = ["image/jpeg", "image/png", "image/gif"];
+            if (!allowedTypes.includes(formData.file.type)) {
+                newErrors.file = "Only JPG, PNG or GIF images are allowed";
+                hasError = true;
+            }
+            
+            const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+
+            if (formData.file.size > MAX_SIZE) {
+                newErrors.file = "Image must be smaller than 5 MB";
+                hasError = true;
+            }
+        }
+
+        // --- Caption length & content ---
+        if (formData.caption.length > 200) {
+            newErrors.caption = "Caption can be at most 200 characters";
+            hasError = true;
+        }
+
+        // --- Location format & length ---
+        if (formData.location.length > 100) {
+            newErrors.location = "Location can be at most 100 characters";
+            hasError = true;
+        }
+        const locRegex = /^[A-Za-z0-9\s,.'-]+$/;
+        if (formData.location && !locRegex.test(formData.location)) {
+            newErrors.location = "Location contains invalid characters";
+            hasError = true;
+        }
+
+        // --- Password match ---
+        if (formData.password && formData.password !== EXPECTED_PASSWORD) {
+            newErrors.password = "Incorrect password!";
+            hasError = true;
+        }
+
         setErrors(newErrors);
-        
+
         if (!hasError) {
-            alert("Upload successful!");
+            // TODO: Replace with API call
+            setTimeout(() => {
+                alert("Upload successful!")
+                setIsUploading(false);
+            }, 1000);
+        } else {
+            setIsUploading(false);
         }
     };
 
@@ -134,7 +186,7 @@ export default function UploadForm() {
                         className="m-1"
                         onClick={handleUpload}
                     >
-                        Upload
+                        {isUploading ? "Uploading..." : "Upload"}
                     </Button>
                 </div>
             </Card.Content>
