@@ -82,31 +82,31 @@ export default function UploadForm() {
 
         // --- Caption length & content ---
         if (formData.caption.length > 200) {
-        newErrors.caption = "Caption can be at most 200 characters";
-        hasError = true;
+            newErrors.caption = "Caption can be at most 200 characters";
+            hasError = true;
         }
 
         // --- Location format & length ---
         if (formData.location.length > 100) {
-        newErrors.location = "Location can be at most 100 characters";
-        hasError = true;
+            newErrors.location = "Location can be at most 100 characters";
+            hasError = true;
         }
         const locRegex = /^[A-Za-z0-9\s,.'-]+$/;
         if (formData.location && !locRegex.test(formData.location)) {
-        newErrors.location = "Location contains invalid characters";
-        hasError = true;
+            newErrors.location = "Location contains invalid characters";
+            hasError = true;
         }
 
         // --- Password match ---
         if (formData.password && formData.password !== EXPECTED_PASSWORD) {
-        newErrors.password = "Incorrect password!";
-        hasError = true;
+            newErrors.password = "Incorrect password!";
+            hasError = true;
         }
 
         setErrors(newErrors);
 
         if (!hasError) {
-        alert("Upload successful!");
+            alert("Upload successful!");
         }
     };
 
