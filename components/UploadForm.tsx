@@ -51,15 +51,21 @@ export default function UploadForm() {
             newErrors.file = "Please upload a photo";
             hasError = true;
         }
-        if (!formData.caption.trim()) {
+
+        const trimmedCaption = formData.caption.trim();
+        if (!trimmedCaption) {
             newErrors.caption = "Caption cannot be empty";
             hasError = true;
         }
-        if (!formData.location.trim()) {
+
+        const trimmedLocation = formData.location.trim();
+        if (!trimmedLocation) {
             newErrors.location = "Location cannot be empty";
             hasError = true;
         }
-        if (!formData.password.trim()) {
+
+        const trimmedPassword = formData.password.trim();
+        if (!trimmedPassword) {
             newErrors.password = "Password cannot be empty";
             hasError = true;
         }
