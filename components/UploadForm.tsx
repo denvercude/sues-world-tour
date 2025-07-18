@@ -22,6 +22,8 @@ export default function UploadForm() {
         file: ""
     });
 
+    const [isUploading, setIsUploading] = useState(false);
+
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
         setFormData(prev => ({ ...prev, [id]: value }));
@@ -43,6 +45,9 @@ export default function UploadForm() {
     };
 
     const handleUpload = () => {
+        if (isUploading) return;
+        setIsUploading(true);
+
         let hasError = false;
         const newErrors = { ...errors };
 
@@ -112,7 +117,13 @@ export default function UploadForm() {
         setErrors(newErrors);
 
         if (!hasError) {
-            alert("Upload successful!");
+            // TODO: Replace with API call
+            setTimeout(() => {
+                alert("Upload successful!")
+                setIsUploading(false);
+            }, 1000);
+        } else {
+            setIsUploading(false);
         }
     };
 
