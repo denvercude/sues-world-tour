@@ -186,7 +186,7 @@ export default function UploadForm() {
                         className="m-1"
                         onClick={handleUpload}
                     >
-                        Upload
+                        {isUploading ? "Uploading..." : "Upload"}
                     </Button>
                 </div>
             </Card.Content>
