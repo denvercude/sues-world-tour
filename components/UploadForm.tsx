@@ -12,7 +12,7 @@ const EXPECTED_PASSWORD = process.env.NEXT_PUBLIC_SUE_PASSWORD
 
 export default function UploadForm() {
     const router = useRouter();
-    
+
     const [formData, setFormData] = useState({
         caption: "",
         password: "",
@@ -135,6 +135,7 @@ export default function UploadForm() {
                     caption: formData.caption,
                     secretUsed: formData.password,
                 });
+                console.log("New post:", newPost);
                 setUploadStatus("success");
                 setTimeout(() => {
                     router.push("/gallery");
