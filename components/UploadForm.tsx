@@ -4,10 +4,15 @@ import { Card } from "@/components/retroui/Card";
 import { Button } from "@/components/retroui/Button";
 import InputWithLabel from "./retroui/InputWithLabel";
 import { useState, ChangeEvent } from "react";
+import { uploadSueImage } from "@/lib/uploadSueImage";
+import { addSuePost } from "@/lib/addSuePost";
+import { useRouter } from "next/navigation";
 
 const EXPECTED_PASSWORD = process.env.NEXT_PUBLIC_SUE_PASSWORD
 
 export default function UploadForm() {
+    const router = useRouter();
+
     const [formData, setFormData] = useState({
         caption: "",
         password: "",
@@ -22,7 +27,7 @@ export default function UploadForm() {
         file: ""
     });
 
-    const [isUploading, setIsUploading] = useState(false);
+    const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'success'>('idle');
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
@@ -44,9 +49,9 @@ export default function UploadForm() {
         }
     };
 
-    const handleUpload = () => {
-        if (isUploading) return;
-        setIsUploading(true);
+    const handleUpload = async() => {
+        if (uploadStatus === "uploading") return;
+        setUploadStatus("uploading");
 
         let hasError = false;
         const newErrors = { ...errors };
@@ -117,13 +122,34 @@ export default function UploadForm() {
         setErrors(newErrors);
 
         if (!hasError) {
-            // TODO: Replace with API call
-            setTimeout(() => {
-                alert("Upload successful!")
-                setIsUploading(false);
-            }, 1000);
+            try {
+                // Check that formData.file is not null.
+                if (!formData.file) {
+                    setErrors(prev => ({ ...prev, file: "Please upload a photo" }));
+                    return;
+                  }
+                const photoUrl = await uploadSueImage(formData.file);
+                const newPost = await addSuePost({
+                    photoUrl: photoUrl,
+                    location: formData.location,
+                    caption: formData.caption,
+                    secretUsed: formData.password,
+                });
+                console.log("New post:", newPost);
+                setUploadStatus("success");
+                setTimeout(() => {
+                    router.push("/gallery");
+                }, 1000);
+            } catch (error) {
+                console.error("Upload failed:", error);
+                setUploadStatus("idle");
+                setErrors(prev => ({
+                    ...prev,
+                    file: error instanceof Error ? error.message : "Upload failed. Please try again."
+                }));
+            }
         } else {
-            setIsUploading(false);
+            setUploadStatus("idle");
         }
     };
 
@@ -185,8 +211,14 @@ export default function UploadForm() {
                     <Button 
                         className="m-1"
                         onClick={handleUpload}
+                        disabled={uploadStatus === "uploading" || uploadStatus === "success"}
                     >
-                        {isUploading ? "Uploading..." : "Upload"}
+                        {uploadStatus === "uploading"
+                            ? "Uploading..."
+                            : uploadStatus === "success"
+                            ? "Success!"
+                            : "Upload"
+                        }
                     </Button>
                 </div>
             </Card.Content>
