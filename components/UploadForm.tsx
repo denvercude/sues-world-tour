@@ -4,6 +4,8 @@ import { Card } from "@/components/retroui/Card";
 import { Button } from "@/components/retroui/Button";
 import InputWithLabel from "./retroui/InputWithLabel";
 import { useState, ChangeEvent } from "react";
+import { uploadSueImage } from "@/lib/uploadSueImage";
+import { addSuePost } from "@/lib/addSuePost";
 
 const EXPECTED_PASSWORD = process.env.NEXT_PUBLIC_SUE_PASSWORD
 
@@ -44,7 +46,7 @@ export default function UploadForm() {
         }
     };
 
-    const handleUpload = () => {
+    const handleUpload = async() => {
         if (isUploading) return;
         setIsUploading(true);
 
@@ -117,12 +119,25 @@ export default function UploadForm() {
         setErrors(newErrors);
 
         if (!hasError) {
-            // TODO: Replace with API call
-            setTimeout(() => {
-                alert("Upload successful!")
-                setIsUploading(false);
-            }, 1000);
+            try {
+                // Check that formData.file is not null.
+                if (!formData.file) {
+                    setErrors(prev => ({ ...prev, file: "Please upload a photo" }));
+                    return;
+                  }
+                const photoUrl = await uploadSueImage(formData.file);
+                const newPost = await addSuePost({
+                    photoUrl: photoUrl,
+                    location: formData.location,
+                    caption: formData.caption,
+                    secretUsed: formData.password,
+                }); 
+                console.log("New post:", newPost);
+            } catch (error) {
+                console.error("Upload failed:", error);
+            }
         } else {
+
             setIsUploading(false);
         }
     };

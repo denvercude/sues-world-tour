@@ -39,6 +39,12 @@ export async function addSuePost({
     // insertions at once. In our case, we are only inserting
     // 1 row.
     // The .select() call ensures Supabase returns the inserted row(s).
+    console.log("New post:", {
+        photo_url: photoUrl,
+        location,
+        caption,
+        secret_used: secretUsed,
+    });
     const { data, error } = await supabase.from('posts').insert([
         {
             photo_url: photoUrl,
