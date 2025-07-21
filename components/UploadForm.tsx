@@ -142,6 +142,11 @@ export default function UploadForm() {
                 }, 1000);
             } catch (error) {
                 console.error("Upload failed:", error);
+                setUploadStatus("idle");
+                setErrors(prev => ({
+                    ...prev,
+                    file: error instanceof Error ? error.message : "Upload failed. Please try again."
+                }));
             }
         } else {
             setUploadStatus("idle");
