@@ -4,10 +4,10 @@ import { supabase } from './supabaseClient';
 export interface SuePostResponse {
     id: number;
     created_at: string;
-    photo_url: string | null;
-    location: string | null;
-    caption: string | null;
-    secret_used: string | null;
+    photo_url: string;
+    location: string;
+    caption: string;
+    secret_used: string;
 }
 
 // Retrieves all Sue posts, ordered by creation data (newest first)
@@ -26,5 +26,12 @@ export async function getSuePosts(): Promise<SuePostResponse[]> {
         return [];
     }
 
-    return data as SuePostResponse[];
+    return data.map((post) => ({
+        id: post.id,
+        created_at: post.created_at,
+        photo_url: post.photo_url || '',
+        location: post.location,
+        caption: post.caption,
+        secret_used: post.secret_used,
+    })) as SuePostResponse[];
 }

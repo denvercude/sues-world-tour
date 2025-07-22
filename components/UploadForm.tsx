@@ -209,7 +209,7 @@ export default function UploadForm() {
                 
                 <div className="flex justify-center pt-1.5">
                     <Button 
-                        className="m-1"
+                        className="mt-1 mb-4 mx-1"
                         onClick={handleUpload}
                         disabled={uploadStatus === "uploading" || uploadStatus === "success"}
                     >
