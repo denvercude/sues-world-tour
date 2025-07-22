@@ -146,12 +146,11 @@ export default function UploadForm() {
                     return;
                   }
                 const photoUrl = await uploadSueImage(formData.file);
-                const newPost = await addSuePost({
+                await addSuePost({
                     photoUrl: photoUrl,
                     location: formData.location,
                     caption: formData.caption,
                 });
-                console.log("New post created:", { photoUrl: photoUrl, location: formData.location, caption: formData.caption });
                 setUploadStatus("success");
                 setTimeout(() => {
                     router.push("/gallery");
