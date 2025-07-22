@@ -2,7 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const { password } = await request.json();
+    const body = await request.json();
+    
+    const password = body?.password;
+    
+    if (typeof password !== 'string') {
+      return NextResponse.json(
+        { error: "Password must be provided as a string." },
+        { status: 400 }
+      );
+    }
 
     const correctPassword = process.env.SUE_UPLOAD_PASSWORD;
 
