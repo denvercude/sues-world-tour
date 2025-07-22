@@ -20,7 +20,9 @@ export default function SuePolaroid({ photoUrl, caption, location, createdAt }: 
                 <Card.Content className="flex-col justify-center items-center">
                     <Text as="p" className="text-md">{caption}</Text>
                     <Text as="p" className="text-md">{location}</Text>
-                    <Text as="p" className="text-md">{createdAt.split("T")[0]}</Text>
+                    <Text as="p" className="text-md">
+                        {new Date(createdAt).toLocaleDateString()}
+                    </Text>
                 </Card.Content>
             </Card>
         </div>
