@@ -8,7 +8,6 @@ interface SuePostResponse {
     photo_url: string;
     location: string;
     caption: string;
-    secret_used: string;
 }
 
 // Defines the expected parameters when adding a post.
@@ -17,7 +16,6 @@ interface AddSuePostParams {
     photoUrl: string;
     location: string;
     caption: string;
-    secretUsed: string;
 }
 
 // The first part of this function uses the interface to more cleanly
@@ -31,7 +29,6 @@ export async function addSuePost({
     photoUrl,
     location,
     caption,
-    secretUsed,
 }: AddSuePostParams): Promise<SuePostResponse[]> {
     // This part of the function targets the posts table and
     // inserts a new row with the data from the parameters passed in.
@@ -44,7 +41,6 @@ export async function addSuePost({
             photo_url: photoUrl,
             location,
             caption,
-            secret_used: secretUsed,
         },
     ]).select();
 

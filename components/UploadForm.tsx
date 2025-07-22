@@ -8,8 +8,6 @@ import { uploadSueImage } from "@/lib/uploadSueImage";
 import { addSuePost } from "@/lib/addSuePost";
 import { useRouter } from "next/navigation";
 
-const EXPECTED_PASSWORD = process.env.NEXT_PUBLIC_SUE_PASSWORD
-
 export default function UploadForm() {
     const router = useRouter();
 
@@ -114,8 +112,27 @@ export default function UploadForm() {
         }
 
         // --- Password match ---
-        if (formData.password && formData.password !== EXPECTED_PASSWORD) {
-            newErrors.password = "Incorrect password!";
+        try {
+            const response = await fetch("/api/validate-upload", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ password: formData.password })
+            });
+            if (!response.ok) {
+                newErrors.password = "Unable to verify password. Please try again.";
+                hasError = true;
+            } else {
+                const data = await response.json();
+                if (!data.valid) {
+                    newErrors.password = "Incorrect password!";
+                    hasError = true;
+                }
+            }
+        } catch (error) {
+            console.error('Password validation failed:', error);
+            newErrors.password = "Unable to verify password. Please check your connection.";
             hasError = true;
         }
 
@@ -129,13 +146,11 @@ export default function UploadForm() {
                     return;
                   }
                 const photoUrl = await uploadSueImage(formData.file);
-                const newPost = await addSuePost({
+                await addSuePost({
                     photoUrl: photoUrl,
                     location: formData.location,
                     caption: formData.caption,
-                    secretUsed: formData.password,
                 });
-                console.log("New post:", newPost);
                 setUploadStatus("success");
                 setTimeout(() => {
                     router.push("/gallery");
