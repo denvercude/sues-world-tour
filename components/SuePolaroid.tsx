@@ -17,10 +17,10 @@ export default function SuePolaroid({ photoUrl, caption, location, createdAt }: 
                         <img src={photoUrl} alt={`Sue's photo at ${location}`} className="w-full h-full object-cover" />
                     </div>
                 </Card.Content>
-                <Card.Content className="flex-col justify-center items-center">
-                    <Text as="p" className="text-md">{caption}</Text>
-                    <Text as="p" className="text-md">{location}</Text>
-                    <Text as="p" className="text-md">
+                <Card.Content className="flex-col justify-center items-center" role="contentinfo">
+                    <Text as="p" className="text-md" aria-label="Photo caption">{caption}</Text>
+                    <Text as="p" className="text-md" aria-label="Photo location">{location}</Text>
+                    <Text as="p" className="text-md" aria-label="Photo date">
                         {new Date(createdAt).toLocaleDateString()}
                     </Text>
                 </Card.Content>
