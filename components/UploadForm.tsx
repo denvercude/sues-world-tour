@@ -136,9 +136,8 @@ export default function UploadForm() {
                     photoUrl: photoUrl,
                     location: formData.location,
                     caption: formData.caption,
-                    secretUsed: formData.password,
                 });
-                console.log("New post:", newPost);
+                console.log("New post created:", { photoUrl: photoUrl, location: formData.location, caption: formData.caption });
                 setUploadStatus("success");
                 setTimeout(() => {
                     router.push("/gallery");
