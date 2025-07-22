@@ -8,8 +8,6 @@ import { uploadSueImage } from "@/lib/uploadSueImage";
 import { addSuePost } from "@/lib/addSuePost";
 import { useRouter } from "next/navigation";
 
-const EXPECTED_PASSWORD = process.env.NEXT_PUBLIC_SUE_PASSWORD
-
 export default function UploadForm() {
     const router = useRouter();
 
@@ -114,7 +112,12 @@ export default function UploadForm() {
         }
 
         // --- Password match ---
-        if (formData.password && formData.password !== EXPECTED_PASSWORD) {
+        const response = await fetch("/api/validate-upload", {
+            method: "POST",
+            body: JSON.stringify({ password: formData.password })
+        });
+        const data = await response.json();
+        if (!data.valid) {
             newErrors.password = "Incorrect password!";
             hasError = true;
         }
