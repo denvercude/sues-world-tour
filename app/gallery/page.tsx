@@ -4,8 +4,9 @@ import { getSuePosts } from "@/lib/getSuePosts";
 
 export default async function GalleryPage() {
     const posts = await getSuePosts();
+    const displayPosts = posts.slice(0, 20);
 
-    const suePolaroids = posts.map((post) => (
+    const suePolaroids = displayPosts.map((post) => (
         <SuePolaroid
             key={post.id}
             photoUrl={post.photo_url}

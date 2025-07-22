@@ -26,5 +26,12 @@ export async function getSuePosts(): Promise<SuePostResponse[]> {
         return [];
     }
 
-    return data as SuePostResponse[];
+    return data.map((post) => ({
+        id: post.id,
+        created_at: post.created_at,
+        photo_url: post.photo_url || '',
+        location: post.location,
+        caption: post.caption,
+        secret_used: post.secret_used,
+    })) as SuePostResponse[];
 }
