@@ -4,10 +4,10 @@ import { supabase } from './supabaseClient';
 export interface SuePostResponse {
     id: number;
     created_at: string;
-    photo_url: string | null;
-    location: string | null;
-    caption: string | null;
-    secret_used: string | null;
+    photo_url: string;
+    location: string;
+    caption: string;
+    secret_used: string;
 }
 
 // Retrieves all Sue posts, ordered by creation data (newest first)

@@ -36,7 +36,7 @@ const CardDescription = ({ className, ...props }: ICardProps) => (
 );
  
 const CardContent = ({ className, ...props }: ICardProps) => {
-  return <div className={cn("p-4", className)} {...props} />;
+  return <div className={cn("pt-4 px-4", className)} {...props} />;
 };
  
 const CardComponent = Object.assign(Card, {
