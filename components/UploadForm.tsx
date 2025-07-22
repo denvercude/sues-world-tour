@@ -112,13 +112,27 @@ export default function UploadForm() {
         }
 
         // --- Password match ---
-        const response = await fetch("/api/validate-upload", {
-            method: "POST",
-            body: JSON.stringify({ password: formData.password })
-        });
-        const data = await response.json();
-        if (!data.valid) {
-            newErrors.password = "Incorrect password!";
+        try {
+            const response = await fetch("/api/validate-upload", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ password: formData.password })
+            });
+            if (!response.ok) {
+                newErrors.password = "Unable to verify password. Please try again.";
+                hasError = true;
+            } else {
+                const data = await response.json();
+                if (!data.valid) {
+                    newErrors.password = "Incorrect password!";
+                    hasError = true;
+                }
+            }
+        } catch (error) {
+            console.error('Password validation failed:', error);
+            newErrors.password = "Unable to verify password. Please check your connection.";
             hasError = true;
         }
 
