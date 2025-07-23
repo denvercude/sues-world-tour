@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import UploadLinkPolaroid from "@/components/UploadLinkPolaroid";
 import SuePolaroid from "@/components/SuePolaroid";
 import { getSuePosts } from "@/lib/getSuePosts";
