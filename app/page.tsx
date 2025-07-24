@@ -26,7 +26,7 @@ export default function Home() {
               <div className="w-full h-4/6 border-2 bg-black">
               </div>
               <Text className="text-6xl font-bold pt-5">SOMETHING</Text>
-              <Text className="pt-5">Some other text here. I haven't quite figured out what to put here yet, but it will say something cool and intersting.</Text>
+              <Text className="pt-5">{"Some other text here. I haven't quite figured out what to put here yet, but it will say something cool and intersting."}</Text>
             </div>
           </div>
         </div>
