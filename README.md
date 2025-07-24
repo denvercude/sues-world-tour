@@ -1,6 +1,8 @@
 # Sue's World Tour
 
-## Project Overview
+## About
+Created by Denver Cude. Sue’s World Tour is an experiment in collaborative storytelling and modern web tech.
+
 Sue is a plastic dinosaur found in the sands of Pismo Beach, California. She travels by mail with instructions and an upload password. Each recipient takes a photo of Sue at a local landmark, uploads it, and passes her along to someone new.
 
 Follow Sue’s journey as she explores the world.
@@ -78,8 +80,3 @@ styles/             # Global styles (Tailwind CSS)
 - **Upload:** Users fill out a form (caption, location, image, password). The image is validated (type, size), uploaded to Supabase Storage, and a new post is added to the database.
 - **Security:** Uploads require a password, checked via a secure API route. Only valid uploads are accepted.
 - **Supabase:** Handles all data storage, image hosting, and public URL generation.
-
----
-
-## About
-Created by Denver Cude. Sue’s World Tour is an experiment in collaborative storytelling and modern web tech.
