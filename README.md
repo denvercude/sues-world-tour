@@ -1,6 +1,10 @@
 # Sue's World Tour
 
-Track the adventures of Sue, a plastic dinosaur, as she travels the world. This is a full-stack portfolio project built with Next.js, React, and Supabase, allowing users to view and contribute to Sue's ever-growing photo gallery.
+Sue is a plastic dinosaur found in the sands of Pismo Beach, California. She travels by mail with instructions and an upload password. Each recipient takes a photo of Sue at a local landmark, uploads it, and passes her along to someone new.
+
+Follow Sue’s journey as she explores the world.
+
+This full-stack portfolio project is built with Next.js, React, and Supabase, enabling users to view and contribute to Sue's growing gallery.
 
 ---
 
@@ -22,8 +26,7 @@ Sue's World Tour is a collaborative photo gallery where friends and fans can upl
 ## Tech Stack
 - **Frontend:** Next.js 15, React 19, Tailwind CSS
 - **Backend:** Supabase (Database & Storage)
-- **UI:** Custom React components, Radix UI, Lucide Icons
-- **Other:** TypeScript, ESLint, class-variance-authority, tailwind-merge
+- **UI:** RetroUI library and custome components
 
 ---
 
@@ -82,11 +85,5 @@ styles/             # Global styles (Tailwind CSS)
 
 ---
 
-## Customization & Theming
-- Modify colors, fonts, and layout in `styles/globals.css` and component files.
-- UI components are in `components/retroui/` for easy reuse and extension.
-
----
-
 ## About
-Created by Denver Cude. Sue’s World Tour is an experiment in collaborative storytelling and modern web tech. Enjoy the journey!
+Created by Denver Cude. Sue’s World Tour is an experiment in collaborative storytelling and modern web tech.
