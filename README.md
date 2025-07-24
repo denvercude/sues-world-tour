@@ -26,7 +26,7 @@ Sue's World Tour is a collaborative photo gallery where friends and fans can upl
 ## Tech Stack
 - **Frontend:** Next.js 15, React 19, Tailwind CSS
 - **Backend:** Supabase (Database & Storage)
-- **UI:** RetroUI library and custome components
+- **UI:** RetroUI library and custom components
 
 ---
 
