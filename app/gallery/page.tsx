@@ -42,7 +42,15 @@ export default async function GalleryPage() {
         console.error('Failed to fetch posts:', error);
         return (
             <main>
-                <h1 className="flex justify-center text-7xl">Gallery Page</h1>
+                <div className="w-full border-8 bg-[#d9bcb4] flex flex-col items-center">
+                    <TitleBar
+                        title="GALLERY"
+                        links={[
+                            { href: "/upload", text: "Upload", colorClass: "text-[#f0b83e]" },
+                            { href: "/", text: "Home", colorClass: "text-[#e23123]" },
+                        ]}
+                    />
+                </div>
                 <div className="flex justify-center items-center mt-8">
                     <p>Failed to load gallery. Please try again later.</p>
                 </div>
