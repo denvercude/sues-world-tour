@@ -7,11 +7,11 @@ export default function TitleBar() {
         <div className="flex justify-center items-center h-32 md:h-40 w-full relative">
             <div className="w-full h-full flex flex-col">
                 <div className="bg-black h-1/2 flex justify-end items-center gap-12 pr-30">
-                    <Link href="./gallery">
-                        <Text className="text-[#e23123] font-bold">Gallery</Text>
+                    <Link href="./gallery" aria-label="Navigate to photo gallery">
+                        <Text className="text-[#e23123] font-bold hover:underline focus:outline-none focus:ring-2 focus:ring-white">Gallery</Text>
                     </Link>
-                    <Link href="./upload">
-                        <Text className="text-[#f0b83e] font-bold">Upload</Text>
+                    <Link href="./upload" aria-label="Navigate to upload page">
+                        <Text className="text-[#f0b83e] font-bold hover:underline focus:outline-none focus:ring-2 focus:ring-white">Upload</Text>
                     </Link>
                 </div>
                 <div className="h-1/2"></div>
