@@ -1,7 +1,5 @@
 # Sue's World Tour
 
----
-
 ## Project Overview
 Sue is a plastic dinosaur found in the sands of Pismo Beach, California. She travels by mail with instructions and an upload password. Each recipient takes a photo of Sue at a local landmark, uploads it, and passes her along to someone new.
 
