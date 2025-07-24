@@ -17,7 +17,7 @@ export default function TitleBar() {
                 <div className="h-1/2"></div>
             </div>
             <div className="border-2 border-black bg-white px-8 py-2 font-bold shadow-[6px_6px_0px_0px_rgba(34,34,34,1)] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
-                <Text className="text-2xl">{"SUE&apos;S WORLD TOUR"}</Text>
+                <Text className="text-2xl">{"SUE'S WORLD TOUR"}</Text>
             </div>
         </div>
     );
