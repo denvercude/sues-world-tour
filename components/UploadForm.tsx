@@ -7,6 +7,7 @@ import { useState, ChangeEvent } from "react";
 import { uploadSueImage } from "@/lib/uploadSueImage";
 import { addSuePost } from "@/lib/addSuePost";
 import { useRouter } from "next/navigation";
+import { Text } from "./retroui/Text";
 
 export default function UploadForm() {
     const router = useRouter();
@@ -169,9 +170,11 @@ export default function UploadForm() {
     };
 
     return (
-        <Card className="w-[350px] shadow-none hover:shadow-none">
+        <Card className="w-[350px] shadow-none hover:shadow-none m-5">
             <Card.Content className="px-4 pt-4 pb-0">
-                <div className="w-full aspect-square border-dashed border-2"></div>
+                <div className="w-full aspect-square border-dashed border-2 bg-gray-200 flex items-center justify-center">
+                    <Text className="text-gray-500 text-sm">Upload Photo</Text>
+                </div>
             </Card.Content>
             <Card.Content className="flex-col justify-content items-center">
                 <InputWithLabel

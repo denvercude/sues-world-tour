@@ -1,36 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sue's World Tour
+
+Sue is a plastic dinosaur found in the sands of Pismo Beach, California. She travels by mail with instructions and an upload password. Each recipient takes a photo of Sue at a local landmark, uploads it, and passes her along to someone new.
+
+Follow Sue’s journey as she explores the world.
+
+This full-stack portfolio project is built with Next.js, React, and Supabase, enabling users to view and contribute to Sue's growing gallery.
+
+---
+
+## Project Overview
+Sue's World Tour is a collaborative photo gallery where friends and fans can upload photos of Sue the T-Rex from around the globe. The app features a stylish, retro-inspired UI and a secure upload system. It’s designed as a fun, interactive portfolio project to showcase modern web development skills.
+
+---
+
+## Features
+- **Gallery View:** Browse Sue’s latest travel photos, each with captions, locations, and upload dates.
+- **Photo Upload:** Add your own Sue sighting! Upload a photo, caption, and location (password-protected for moderation).
+- **Responsive Design:** Looks great on desktop and mobile.
+- **Retro UI Components:** Custom Card, Button, and Text components for a unique look.
+- **Supabase Backend:** Stores images and post data securely in the cloud.
+- **Password-Protected Uploads:** Only users with the correct password can upload new photos.
+
+---
+
+## Tech Stack
+- **Frontend:** Next.js 15, React 19, Tailwind CSS
+- **Backend:** Supabase (Database & Storage)
+- **UI:** RetroUI library and custome components
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
+### 1. Clone the Repo
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/sues-world-tour.git
+cd sues-world-tour
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
+```bash
+npm install
+# or
+yarn install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Set Up Environment Variables
+Create a `.env.local` file in the root directory with the following:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+SUE_UPLOAD_PASSWORD=your-upload-password
+```
+- Get your Supabase credentials from your [Supabase project dashboard](https://app.supabase.com/).
+- Set a password for uploads (share only with trusted users).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run the Development Server
+```bash
+npm run dev
+```
+Visit [http://localhost:3000](http://localhost:3000) to view the app.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
+```
+app/                # Next.js app directory (pages, layout, API routes)
+  gallery/          # Gallery page
+  upload/           # Upload page
+  api/validate-upload/ # API route for password validation
+components/         # UI components (Cards, Buttons, Gallery, UploadForm, etc.)
+lib/                # Supabase client, upload logic, post fetching/adding
+public/images/      # Static images (Sue's starter photos)
+styles/             # Global styles (Tailwind CSS)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## How It Works
+- **Gallery:** Fetches the latest 20 posts from Supabase and displays them as Polaroid-style cards.
+- **Upload:** Users fill out a form (caption, location, image, password). The image is validated (type, size), uploaded to Supabase Storage, and a new post is added to the database.
+- **Security:** Uploads require a password, checked via a secure API route. Only valid uploads are accepted.
+- **Supabase:** Handles all data storage, image hosting, and public URL generation.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## About
+Created by Denver Cude. Sue’s World Tour is an experiment in collaborative storytelling and modern web tech.
