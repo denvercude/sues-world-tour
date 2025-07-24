@@ -1,15 +1,13 @@
 # Sue's World Tour
 
+---
+
+## Project Overview
 Sue is a plastic dinosaur found in the sands of Pismo Beach, California. She travels by mail with instructions and an upload password. Each recipient takes a photo of Sue at a local landmark, uploads it, and passes her along to someone new.
 
 Follow Sue’s journey as she explores the world.
 
 This full-stack portfolio project is built with Next.js, React, and Supabase, enabling users to view and contribute to Sue's growing gallery.
-
----
-
-## Project Overview
-Sue's World Tour is a collaborative photo gallery where friends and fans can upload photos of Sue the T-Rex from around the globe. The app features a stylish, retro-inspired UI and a secure upload system. It’s designed as a fun, interactive portfolio project to showcase modern web development skills.
 
 ---
 
