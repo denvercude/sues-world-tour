@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import UploadLinkPolaroid from "@/components/UploadLinkPolaroid";
 import SuePolaroid from "@/components/SuePolaroid";
 import { getSuePosts } from "@/lib/getSuePosts";
+import TitleBar from "@/components/TitleBar";
 
 export default async function GalleryPage() {
     try {
@@ -22,8 +23,14 @@ export default async function GalleryPage() {
 
         return (
             <main>
-                <h1 className="flex justify-center text-7xl">Gallery Page</h1>
-                <div className="container mx-auto mt-20 px-1 py-1">
+                <div className="w-full border-8 bg-[#d9bcb4] flex flex-col items-center">
+                    <TitleBar
+                        title="GALLERY"
+                        links={[
+                            { href: "/upload", text: "Upload", colorClass: "text-[#f0b83e]" },
+                            { href: "/", text: "Home", colorClass: "text-[#e23123]" },
+                        ]}
+                    />
                     <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 justify-items-center">
                         <UploadLinkPolaroid />
                         {suePolaroids}

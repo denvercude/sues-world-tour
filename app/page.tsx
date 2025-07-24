@@ -8,8 +8,14 @@ export default function Home() {
     <main>
       <div className="h-screen w-screen">
         <div className="w-full border-8 bg-[#d9bcb4] flex flex-col items-center">
-          <TitleBar />
-          <div className="flex flex-col md:flex-row gap-4 p-4 w-5/6 h-3/4">
+          <TitleBar
+            title="SUE'S WORLD TOUR"
+            links={[
+              { href: "/gallery", text: "Gallery", colorClass: "text-[#e23123]" },
+              { href: "/upload", text: "Upload", colorClass: "text-[#f0b83e]" },
+            ]}
+          />
+          <div className="flex flex-col md:flex-row gap-4 p-4 w-5/6 h-3/4 m-3">
             <div className="bg-white flex flex-col items-center w-full md:w-1/3 aspect-[3/4] p-3">
               <div className="bg-black w-full flex-1 flex items-center justify-center">
                 <Image src="/images/sue-1.jpeg" alt="about" width={400} height={400} className="max-w-full max-h-full rotate-70 p-10" />
