@@ -11,7 +11,7 @@ Follow Sue’s journey as she explores the world.
 
 ## Features
 - **Gallery View:** Browse Sue’s latest travel photos, each with captions, locations, and upload dates.
-- **Photo Upload:** Add your own Sue sighting! Upload a photo, caption, and location (password-protected for moderation).
+- **Photo Upload:** Upload a photo, caption, and location (password-protected for moderation).
 - **Responsive Design:** Looks great on desktop and mobile.
 - **Retro UI Components:** Custom Card, Button, and Text components for a unique look.
 - **Supabase Backend:** Stores images and post data securely in the cloud.
