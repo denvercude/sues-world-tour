@@ -30,7 +30,7 @@ Follow Sue’s journey as she explores the world.
 
 ### 1. Clone the Repo
 ```bash
-git clone https://github.com/yourusername/sues-world-tour.git
+git clone https://github.com/denvercude/sues-world-tour.git
 cd sues-world-tour
 ```
 
