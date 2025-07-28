@@ -22,7 +22,7 @@ export default function Home() {
               </div>
               <div className="p-4 flex flex-col gap-4 items-center">
                 <Text className="text-black text-6xl font-black">ABOUT</Text>
-                <Text>Sue is a plastic dinosaur that emerged from the sands of Pismo Beach, California in Summer 2025. I mailed her to my friend and now she is on vaction forever. Enjoy her travel photos</Text>
+                <Text>Sue is a plastic dinosaur found in the sands of Pismo Beach, California. I mailed her to my friend and now she is on vacation forever. Enjoy her travel photos!</Text>
               </div>
             </div>
             <div className="bg-white flex w-full md:w-1/3 aspect-[3/4] p-3">

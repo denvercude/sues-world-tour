@@ -23,7 +23,7 @@ export default async function GalleryPage() {
 
         return (
             <main>
-                <div className="w-full border-8 bg-[#d9bcb4] flex flex-col items-center">
+                <div className="w-screen h-screen border-8 bg-[#d9bcb4] flex flex-col items-center">
                     <TitleBar
                         title="GALLERY"
                         links={[
