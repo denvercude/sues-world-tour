@@ -11,7 +11,7 @@ export default function TitleBar({ title, links }: TitleBarProps) {
   return (
     <div className="flex justify-center items-center h-32 md:h-40 w-full relative">
       <div className="w-full h-full flex flex-col">
-        <div className="bg-black h-1/2 flex justify-end items-center gap-12 pr-30">
+        <div className="bg-black h-1/2 flex justify-center md:justify-end items-center gap-12 px-4 md:pr-30">
           {links.map((link, idx) => (
             <Link key={idx} href={link.href} aria-label={`Navigate to ${link.text}`}>
               <Text className={`${link.colorClass ?? "text-white"} font-bold hover:underline mb-5`}>
