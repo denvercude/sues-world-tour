@@ -26,9 +26,9 @@ export default function Home() {
               </div>
             </div>
             <div className="bg-white flex w-full md:w-1/3 aspect-[3/4] p-3">
-              <div className="bg-black flex-1 flex items-center justify-center">
-                <Image src="/images/sue-2.jpeg" alt="about" width={400} height={400} className="max-w-full max-h-full p-20" />
-              </div>
+            <div className="bg-black flex-1 flex items-center justify-center">
+              <Image src="/images/sue-2.jpeg" alt="about" width={400} height={400} className="max-w-full max-h-full p-4 md:p-10 lg:p-20" />
+            </div>
               <div className="flex items-center justify-center w-1/3">
                 <Text className="text-black text-6xl rotate-[-90deg] font-black whitespace-nowrap">IN TRANSIT</Text>
               </div>

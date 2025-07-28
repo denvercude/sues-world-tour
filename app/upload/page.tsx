@@ -3,7 +3,7 @@ import UploadForm from "@/components/UploadForm";
 
 export default function UploadPage() {
     return (
-        <div className="w-screen h-screen border-8 bg-[#d9bcb4] flex flex-col items-center">
+        <div className="w-full min-h-screen border-8 bg-[#d9bcb4] flex flex-col items-center">
             <TitleBar
                 title="UPLOAD A PHOTO"
                 links={[
